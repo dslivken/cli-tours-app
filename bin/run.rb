@@ -8,6 +8,7 @@ while input != "exit" do
 	if Scraper.tours.has_key?(input) == false
 		Scraper.new(input)
 	end
+	puts Scraper.tours[input]
 	Scraper.print_search(input)
 	puts "Enter the number of the #{input} tour you want details for (or 'exit':)"
 	tour=gets.strip
