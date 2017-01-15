@@ -9,11 +9,15 @@ while input != "exit" do
 		Scraper.new(input)
 	end
 	Scraper.print_search(input)
-	puts "Enter the number of the tour you want details for (or 'exit':)"
+	puts "Enter the number of the #{input} tour you want details for (or 'exit':)"
 	tour=gets.strip
 	while tour != "exit" do
-		Tour.print_tour(input, tour)
-		puts "Enter another tour or 'exit':"
+		if tour == "r"
+			Scraper.print_search(input)
+		elsif
+			Tour.print_tour(input, tour)
+		end
+		puts "Enter another #{input} tour, 'r' to reprint full list or 'exit':"
 		tour = gets.strip
 	end
 	puts "Enter another location or 'exit':"

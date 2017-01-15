@@ -15,6 +15,14 @@ class Tour
     		itinerary.each do |d|
         		details << {:day => d.css('h3').text, :day_descrip => d.css('p').text}
       		end
+    	elsif Scraper.tours[tour][tindex][:brand] == "Avalon"
+      		itinerary = html.css('#itinerary h4')
+      		itinerary.each do |d|
+        		full = d.text
+        		day = d.css('span').text
+        		fix_day = full.sub(day,"#{day} ")
+        		details << {:day => fix_day, :day_descrip => d.css('+p').text}
+      		end 
       	elsif
       		details << {:error => "Tour details not ready yet"}
       	end
