@@ -16,7 +16,7 @@ class Tour
         		details << {:day => d.css('h3').text, :day_descrip => d.css('p').text}
       		end
       	elsif
-      		details << "Tour details not ready yet"
+      		details << {:error => "Tour details not ready yet"}
       	end
       		
 
@@ -26,7 +26,7 @@ class Tour
   	def self.print_tour (tour,number)
 		details = self.scrape_tour(tour, number)
 		puts "- - - - - - - - - - - - - - -"
-		details.each_with_index do |t, i|
+		details.each do |t|
 			t.each do |key, value|
 				if key != :link
 					puts "#{value}"
