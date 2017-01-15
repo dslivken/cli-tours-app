@@ -8,18 +8,21 @@ while input != "exit" do
 	if Scraper.tours.has_key?(input) == false
 		Scraper.new(input)
 	end
-	puts Scraper.tours[input]
-	Scraper.print_search(input)
-	puts "Enter the number of the #{input} tour you want details for (or 'exit':)"
-	tour=gets.strip
-	while tour != "exit" do
-		if tour == "r"
-			Scraper.print_search(input)
-		elsif
-			Tour.print_tour(input, tour)
+	if Scraper.tours[input].size == 0
+		puts "Sorry, nothing found!!"
+	elsif
+		Scraper.print_search(input)
+		puts "Enter the number of the #{input} tour you want details for (or 'exit':)"
+		tour=gets.strip
+		while tour != "exit" do
+			if tour == "r"
+				Scraper.print_search(input)
+			elsif
+				Tour.print_tour(input, tour)
+			end
+			puts "Enter another #{input} tour, 'r' to reprint full list or 'exit':"
+			tour = gets.strip
 		end
-		puts "Enter another #{input} tour, 'r' to reprint full list or 'exit':"
-		tour = gets.strip
 	end
 	puts "Enter another location or 'exit':"
 	input = gets.strip
