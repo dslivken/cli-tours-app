@@ -1,5 +1,7 @@
 class Tour
 
+	attr_accessor :day, :day_descrip
+
 	def self.scrape_tour(tour, number)
     	tindex=number.to_i-1
     	url = Scraper.tours[tour][tindex][:link]
@@ -21,5 +23,17 @@ class Tour
     	details 
 	end
 
+  	def self.print_tour (tour,number)
+		details = self.scrape_tour(tour, number)
+		puts "- - - - - - - - - - - - - - -"
+		details.each_with_index do |t, i|
+			t.each do |key, value|
+				if key != :link
+					puts "#{value}"
+				end
+			end
+			puts "- - - - - - - - - - - - - - -"
+		end
+	end
 
 end
