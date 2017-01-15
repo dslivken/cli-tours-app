@@ -22,6 +22,15 @@ class Tour
         		day = d.css('span').text
         		fix_day = full.sub(day,"#{day} ")
         		details << {:day => fix_day, :day_descrip => d.css('+p').text}
+      		end
+      	elsif Scraper.tours[tour][tindex][:brand] == "Monograms"
+    		itinerary = html.css('.itineraryday')
+      		itinerary.each do |d|
+        		day = d.css('.number_day').text.split("\r\n")[1].strip
+        		number = d.css('.number_number').text.split("\r\n")[1].strip
+        		city = d.css('.city').text.split("\r\n")[1].strip
+        		combined_day = "#{day} #{number} #{city}"
+        		details << {:day => combined_day, :day_descrip => d.css('p').text.split("\r\n")[1].strip}
       		end 
       	elsif
       		details << {:error => "Tour details not ready yet"}
