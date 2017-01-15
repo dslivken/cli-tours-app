@@ -13,6 +13,7 @@ class Scraper
 	def scrape_main (keyword)
 		scrape=[]
 		url="#{BASEURL}#{keyword}"
+    	puts "Pulling tours for #{keyword}. Please be patient :)"
 		html= Nokogiri::HTML(open(url))
 		products = html.css('.product-list-contain')
 		products.each do |p|
