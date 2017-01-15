@@ -7,7 +7,7 @@ input = gets.strip
 while input != "exit" do
 	list=Scraper.new(input)
 	Scraper.print_search(input)
-
+	Tour.scrape_tour(input, "7")
 	puts "Enter another location or 'exit':"
 	input = gets.strip
 end

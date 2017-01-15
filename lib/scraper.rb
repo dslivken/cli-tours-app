@@ -11,7 +11,7 @@ class Scraper
 	end
 
 	def initialize (keyword)
-		@@tours = {keyword => self.scrape_main(keyword)}
+		@@tours[keyword] = self.scrape_main(keyword)
 		puts @@tours
 	end
 
