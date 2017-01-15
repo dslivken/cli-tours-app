@@ -4,10 +4,15 @@ class Scraper
 
 	BASEURL= 'http://www.globusjourneys.com/Travel-Tour-Packages/Reservations/Vacation-Search/?keyword='
 
-	@tours = []
+	@@tours = {}
+
+	def self.tours
+		@@tours
+	end
 
 	def initialize (keyword)
-		@tours = self.scrape_main(keyword)
+		@@tours = {keyword => self.scrape_main(keyword)}
+		puts @@tours
 	end
 
 	def scrape_main (keyword)
@@ -33,9 +38,9 @@ class Scraper
       	scrape
 	end
 
-	def print_search
+	def self.print_search(keyword)
 	    puts "- - - - - - - - - - - - - - -"
-	    @tours.each_with_index do |t, i|
+	    @@tours[keyword].each_with_index do |t, i|
 	    	puts "TOUR # #{i+1}"
 	    	t.each do |key, value|
 	        	if key != :link
