@@ -17,8 +17,9 @@ while input != "exit" do
 		while tour != "exit" do
 			if tour == "r"
 				Scraper.print_search(input)
-			elsif
+			elsif tour.to_i.between?(1,Scraper.tours[input].size)
 				Tour.print_tour(input, tour)
+			else puts "Input not recognized, try again."
 			end
 			puts "Enter another #{input} tour, 'r' to reprint full list or 'exit':"
 			tour = gets.strip
