@@ -1,13 +1,13 @@
 class Scraper
 
-	attr_accessor :products
+	attr_accessor :tours, :name, :link, :descrip, :price
 
 	BASEURL= 'http://www.globusjourneys.com/Travel-Tour-Packages/Reservations/Vacation-Search/?keyword='
 
 	@tours = []
 
 	def initialize (keyword)
-		self.scrape_main(keyword)
+		@tours = self.scrape_main(keyword)
 	end
 
 	def scrape_main (keyword)
@@ -15,6 +15,13 @@ class Scraper
 		url="#{BASEURL}#{keyword}"
 		html= Nokogiri::HTML(open(url))
 		products = html.css('.product-list-contain')
-		@products = products
+		products.each do |p|
+      		link=p.css('a')[0]['href']
+      		if link[0]=="/"
+        		link = "http://www.globusjourneys.com#{link}"
+      		end
+      		 scrape << {:name => p.css('h3').text, :link => link, :descrip =>p.css('h4').text, :price =>p.css('p.listing-price').text.split("\r\n")[1].strip}
+      	end
+      	scrape
 	end
 end
