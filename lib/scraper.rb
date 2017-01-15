@@ -33,20 +33,6 @@ class Scraper
 	end
 
 	def print_search
-<<<<<<< HEAD
-    	puts "- - - - - - - - - - - - - - -"
-    	@tours.each_with_index do |t, i|
-      		puts "TOUR # #{i+1}"
-      		t.each do |key, value|
-        		if key != :link
-          			puts "#{key}: #{value}"
-        		end
-      		end
-      		puts "- - - - - - - - - - - - - - -"
-    	end
-  	end
-
-=======
 	    puts "- - - - - - - - - - - - - - -"
 	    @tours.each_with_index do |t, i|
 	    	puts "TOUR # #{i+1}"
@@ -58,5 +44,4 @@ class Scraper
 	      	puts "- - - - - - - - - - - - - - -"
 	    end
 	end
->>>>>>> init-branch
 end
