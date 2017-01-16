@@ -2,4 +2,4 @@
 
 require_relative '../config'
 
-GlobusSearch.new.call
+CLI.new.call
